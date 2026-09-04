@@ -19,6 +19,6 @@ model:
     fit_intercept: true
     n_jobs: null
     positive: false
-    tol: 1.0e-06
+    
   r2_score: 0.9842144543759883
   target_variable: price
