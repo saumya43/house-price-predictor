@@ -6,7 +6,7 @@ COPY src/api .
 
 RUN pip install -r requirements.txt
 
-COPY models/trained/*.pki models/trained
+COPY models/trained/*.pkl models/trained
 
 EXPOSE 8000
 
