@@ -97,6 +97,7 @@ jobs:
           mlflow server --host 0.0.0.0 \
           --backend-store-uri sqlite:///mlflow.db \
           --default-artifact-root /tmp/mlruns
+          docker ps -a
 
       - name: Wait for MLflow to be ready
         run: |
