@@ -131,11 +131,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-          python-version: '3.11.9'
+      
 
     - name: Download trained model
       uses: actions/download-artifact@v4
@@ -162,14 +158,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-
-    
-    - name: Check ML dependencies
-      run: |
-        python --version
-        python -c "import numpy; print('NumPy:', numpy.__version__)"
-        python -c "import sklearn; print('Scikit-learn:', sklearn.__version__)"
-        python -c "import joblib; print('Joblib:', joblib.__version__)"
 
     - name: Build and push Docker image
       run: |
