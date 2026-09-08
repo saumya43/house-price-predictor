@@ -154,6 +154,13 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
+    - name: Check ML dependencies
+      run: |
+        python --version
+        python -c "import numpy; print('NumPy:', numpy.__version__)"
+        python -c "import sklearn; print('Scikit-learn:', sklearn.__version__)"
+        python -c "import joblib; print('Joblib:', joblib.__version__)"
+
     - name: Build and push Docker image
       run: |
         COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7)
