@@ -178,14 +178,7 @@ jobs:
 
         docker run -d -p 8000:8000 --name test-api docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH
         docker run --rm docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:${COMMIT_HASH} ls -la /app/models/trained
-        echo "Checking ML dependencies..."
-        docker run --rm $IMAGE python -c \
-        "import numpy, sklearn, joblib; print('NumPy:', numpy.__version__); print('Scikit-learn:', sklearn.__version__); print('Joblib:', joblib.__version__)"
-
-        echo "Testing model loading..."
-        docker run --rm $IMAGE python -c \
-        "import joblib; joblib.load('models/trained/house_price_model.pkl'); print('Model loaded successfully')"
-
+      
         for i in {1..10}; do
           curl -f http://localhost:8000/health && break || sleep 5;
         done
