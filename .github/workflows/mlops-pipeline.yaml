@@ -108,6 +108,7 @@ jobs:
 
       - name: Train the models
         run: |
+          ls -la models/
           mkdir -p models
           python src/models/train_model.py \
           --config configs/model_config.yaml \
